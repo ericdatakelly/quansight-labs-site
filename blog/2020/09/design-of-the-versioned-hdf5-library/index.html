@@ -30,7 +30,13 @@ MathJax.Hub.Config({
   gtag('js', new Date());
 
   gtag('config', 'UA-163785882-1');
-</script><meta name="author" content="Aaron Meurer">
+</script><link rel="stylesheet" type="text/css" href="../../../../assets/css/tipuesearch.css">
+<meta name="author" content="Aaron Meurer">
+<meta property="description" content="In a previous
+post, we
+introduced the Versioned HDF5 library and described some of its features. In
+this post, we'll go into detail on how the underlying design of the library
+works on a technical lev">
 <link rel="prev" href="../versioned-hdf5-performance/" title="Performance of the Versioned HDF5 Library" type="text/html">
 <link rel="next" href="../../11/manylinux1-is-obsolete-manylinux2010-is-almost-eol-what-is-next/" title="Manylinux1 is obsolete, manylinux2010 is almost EOL, what is next?" type="text/html">
 <meta property="og:site_name" content="Quansight Labs">
@@ -41,10 +47,14 @@ post, we
 introduced the Versioned HDF5 library and described some of its features. In
 this post, we'll go into detail on how the underlying design of the library
 works on a technical lev">
+<meta property="og:image" content="https://labs.quansight.org/images/QuansightLabs_logo_V2.png">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2020-09-29T11:00:00-05:00">
 <meta property="article:tag" content="h5py">
 <meta property="article:tag" content="HDF5">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@quansightai">
+<meta property="twitter:image" content="https://labs.quansight.org/images/QuansightLabs_logo_V2.png">
 <link rel="stylesheet" href="../../../../assets/css/quansightlabs.css">
 </head>
 <body>
@@ -57,7 +67,7 @@ navbar-dark bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
         <a class="navbar-brand" href="https://labs.quansight.org/">
-            <img src="../../../../images/quansight_labs_logo_white.png" alt="Quansight Labs" id="logo" class="d-inline-block align-top"></a>
+            <img src="../../../../images/QuansightLabs_logo_V1_white.png" alt="Quansight Labs" id="logo" class="d-inline-block align-top"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -85,7 +95,15 @@ navbar-dark bg-dark
                 
             </li>
 </ul>
-<ul class="navbar-nav navbar-right"></ul>
+<form class="navbar-form navbar-left" action="../../../../search" role="search">
+    <div class="form-group">
+        <input type="text" class="form-control" id="tipue_search_input" name="q" placeholder="Search…" autocomplete="off">
+</div>
+    <input type="submit" value="Local Search" style="visibility: hidden;"><!-- button type="submit" class="btn btn-default">Submit</button -->
+</form>
+
+
+            <ul class="navbar-nav navbar-right"></ul>
 </div>
 <!-- /.navbar-collapse -->
     </div>
@@ -272,7 +290,7 @@ group</a> in conjunction with
                 <a href="../../11/manylinux1-is-obsolete-manylinux2010-is-almost-eol-what-is-next/" rel="next" title="Manylinux1 is obsolete, manylinux2010 is almost EOL, what is next?">Next post</a>
             </li>
         </ul></nav></aside></article><!--End of body content--><footer id="footer">
-            Contents © 2020         <a href="../../../../team">Quansight Labs Team</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2021         <a href="../../../../team">Quansight Labs Team</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>

@@ -57,7 +57,8 @@ header a:hover{
   color: #3bcd76;
 }
 #logo {
-  max-height: 50px;
+  max-height: 35px;
+  margin-top: 5px;
 }  
 #navbar-separator{
   background-color: #fff;
@@ -6948,9 +6949,7 @@ button.close {
 
 .postindex {
   max-width: 750px;
-  text-align: justify;
-  #margin-right: auto;
-  #margin-left: auto;
+  text-align: left;
 }
 
 div.prompt {

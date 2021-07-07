@@ -1,90 +1,278 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Quansight Labs</title><link>https://labs.quansight.org/</link><description>Quansight Labs site: blog, development and project overview</description><atom:link href="https://labs.quansight.org/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:info@quansight.com"&gt;Quansight Labs Team&lt;/a&gt; </copyright><lastBuildDate>Fri, 13 Nov 2020 01:01:35 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Manylinux1 is obsolete, manylinux2010 is almost EOL, what is next?</title><link>https://labs.quansight.org/blog/2020/11/manylinux1-is-obsolete-manylinux2010-is-almost-eol-what-is-next/</link><dc:creator>Matti Picus</dc:creator><description>&lt;div&gt;&lt;p&gt;The basic installation format for users who install packages via &lt;code&gt;pip&lt;/code&gt; is
-the wheel format. Wheel names are composed of four parts: a
-package-name-and-version tag (which can be further broken down), a Python tag,
-an ABI tag, and a platform tag. More information on the tags can be found in
-&lt;a href="https://www.python.org/dev/peps/pep-0425"&gt;PEP 425&lt;/a&gt;.  So a package like NumPy
-will be available on PyPI as &lt;code&gt;numpy-1.19.2-cp36-cp36m-win_amd64.whl&lt;/code&gt; for 64-bit
-windows and &lt;code&gt;numpy-1.19.2-cp36-cp36m-macosx_10_9_x86_64.whl&lt;/code&gt; for macOS. Note
-that only the plaform tag &lt;code&gt;win_amd64&lt;/code&gt; or &lt;code&gt;macosx_10_9_x86_64&lt;/code&gt; differs. &lt;/p&gt;
-&lt;p&gt;But what about Linux? There is no single, vendor controlled, "Linux platform"
-e.g., Ubuntu, RedHat, Fedora, Debian, FreeBSD all package software at slightly
-different versions. What most Linux distributions do have in common is the
-glibc runtime library, and a smattering of various additional system libraries.
-So it is possible to define a least common denominator (LCD) of software
-expected to be on a Linux platform (exceptions apply, e.g. non-glibc
-distributions).&lt;/p&gt;
-&lt;p&gt;The decision to converge on a LCD common platform gave birth to the
-&lt;a href="https://www.python.org/dev/peps/pep-0513/"&gt;manylinux1&lt;/a&gt; standard. Going back
-to our example, numpy is available as
-&lt;code&gt;numpy-1.19.2-cp36-cp36m-manylinux1_x86_64.whl&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;The first manylinux standard, manylinux1, was based on CentOS5 which has &lt;a href="https://endoflife.software/operating-systems/linux/centos"&gt;been
-obsolete&lt;/a&gt; since
-March 2017. The subsequent manylinux2010 standard is based on CentOS6, which
-will hit end-of-life in December 2020. The manylinux2014 standard still has some
-breathing room. Based on CentOS7, it will reach end-of-life in July 2024.&lt;/p&gt;
-&lt;p&gt;So what is next for &lt;code&gt;manylinux&lt;/code&gt;, and what &lt;code&gt;manylinux&lt;/code&gt; should users and package
-maintainers use?&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://labs.quansight.org/blog/2020/11/manylinux1-is-obsolete-manylinux2010-is-almost-eol-what-is-next/"&gt;Read more…&lt;/a&gt; (3 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>manylinux</category><category>packaging</category><category>pip</category><guid>https://labs.quansight.org/blog/2020/11/manylinux1-is-obsolete-manylinux2010-is-almost-eol-what-is-next/</guid><pubDate>Thu, 12 Nov 2020 19:00:06 GMT</pubDate></item><item><title>Design of the Versioned HDF5 Library</title><link>https://labs.quansight.org/blog/2020/09/design-of-the-versioned-hdf5-library/</link><dc:creator>Aaron Meurer</dc:creator><description>&lt;div&gt;&lt;p&gt;In a &lt;a href="https://labs.quansight.org/blog/2020/08/introducing-versioned-hdf5/"&gt;previous
-post&lt;/a&gt;, we
-introduced the Versioned HDF5 library and described some of its features. In
-this post, we'll go into detail on how the underlying design of the library
-works on a technical level.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://labs.quansight.org/blog/2020/09/design-of-the-versioned-hdf5-library/"&gt;Read more…&lt;/a&gt; (6 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>h5py</category><category>HDF5</category><guid>https://labs.quansight.org/blog/2020/09/design-of-the-versioned-hdf5-library/</guid><pubDate>Tue, 29 Sep 2020 16:00:00 GMT</pubDate></item><item><title>Performance of the Versioned HDF5 Library</title><link>https://labs.quansight.org/blog/2020/09/versioned-hdf5-performance/</link><dc:creator>Melissa Weber Mendonça</dc:creator><description>&lt;div&gt;&lt;p&gt;In several industry and science applications, a filesystem-like storage model such as &lt;a href="https://www.hdfgroup.org/solutions/hdf5/"&gt;HDF5&lt;/a&gt; is the more appropriate solution for manipulating large amounts of data. However, suppose that data changes over time. In that case, it's not obvious how to track those different versions, since HDF5 is a binary format and is not well suited for traditional version control systems and tools. &lt;/p&gt;
-&lt;p&gt;In a &lt;a href="https://labs.quansight.org/blog/2020/08/introducing-versioned-hdf5/"&gt;previous post&lt;/a&gt;, we introduced the Versioned HDF5 library, which implements a mechanism for storing binary data sets in a versioned way that feels natural to users of other version control systems, and described some of its features. In this post, we'll show some of the performance analysis we did while developing the library, hopefully making the case that reading and writing versioned HDF5 files can be done with a nice, intuitive API while being as efficient as possible. The tests presented here show that using the Versioned HDF5 library results in reduced disk space usage, and further reductions in this area can be achieved with the use of HDF5/&lt;a href="https://www.h5py.org"&gt;h5py&lt;/a&gt;-provided compression algorithms. That only comes at a cost of &amp;lt;10x file writing speed.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://labs.quansight.org/blog/2020/09/versioned-hdf5-performance/"&gt;Read more…&lt;/a&gt; (14 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>h5py</category><category>HDF5</category><guid>https://labs.quansight.org/blog/2020/09/versioned-hdf5-performance/</guid><pubDate>Fri, 11 Sep 2020 11:00:00 GMT</pubDate></item><item><title>PyTorch-Ignite: training and evaluating neural networks flexibly and transparently</title><link>https://labs.quansight.org/blog/2020/09/pytorch-ignite/</link><dc:creator>Victor Fomin</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Quansight Labs</title><link>https://labs.quansight.org/</link><description>Quansight Labs site: blog, development and project overview</description><atom:link href="https://labs.quansight.org/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:info@quansight.com"&gt;Quansight Labs Team&lt;/a&gt; </copyright><lastBuildDate>Wed, 07 Jul 2021 17:27:31 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Pyflyby: Improving Efficiency of Jupyter Interactive Sessions</title><link>https://labs.quansight.org/blog/2021/07/pyflyby-improving-efficiency-of-jupyter-interactive-sessions/</link><dc:creator>Matthias Bussonnier, Aaron Meurer,</dc:creator><description>&lt;div&gt;&lt;p&gt;Interruption hinder productivity more than interruption. A notification, random
+realization, or unrelated error can derail one's train of thought when deep in a
+complex analysis – a frustrating experience.&lt;/p&gt;
+&lt;p&gt;In the software development context, forgetting to import a statement in an
+interactive Jupyter session is such an experience. This can be especially
+frustrating when using typical abbreviations, like &lt;code&gt;np&lt;/code&gt;, &lt;code&gt;pd&lt;/code&gt;, &lt;code&gt;plt&lt;/code&gt;, where the
+meaning is obvious to the human reader, but not to the computer. The
+time-to-first-plot, and ability to quickly cleanup one's notebook afterward
+are critical to an enjoyable and efficient workflow.&lt;/p&gt;
+&lt;p&gt;In this blogpost we present &lt;a href="https://github.com/deshaw/pyflyby"&gt;pyflyby&lt;/a&gt;, a
+project and an extension to IPython and
+&lt;a href="https://github.com/deshaw/jupyterlab-pyflyby"&gt;JupyterLab&lt;/a&gt;, that, among many
+things, automatically inserts imports and tidies Python files and notebooks.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://labs.quansight.org/blog/2021/07/pyflyby-improving-efficiency-of-jupyter-interactive-sessions/"&gt;Read more…&lt;/a&gt; (4 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Deshaw</category><category>Labs</category><category>Pyflyby</category><guid>https://labs.quansight.org/blog/2021/07/pyflyby-improving-efficiency-of-jupyter-interactive-sessions/</guid><pubDate>Wed, 07 Jul 2021 10:00:00 GMT</pubDate></item><item><title>Distributed Training Made Easy with PyTorch-Ignite</title><link>https://labs.quansight.org/blog/2021/06/distributed-made-easy-with-ignite/</link><dc:creator>Victor Fomin</dc:creator><description>&lt;div&gt;&lt;img alt="PyTorch-Ignite logo" src="https://labs.quansight.org/images/pytorch-ignite/ignite_logo_mixed.png"&gt;
+&lt;p&gt;Authors: &lt;a class="reference external" href="https://github.com/fco-dv"&gt;François Cokelaer&lt;/a&gt;,
+&lt;a class="reference external" href="https://github.com/Priyansi"&gt;Priyansi&lt;/a&gt;, &lt;a class="reference external" href="https://github.com/sdesrozis/"&gt;Sylvain
+Desroziers&lt;/a&gt;, &lt;a class="reference external" href="https://github.com/vfdev-5"&gt;Victor
+Fomin&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Writing &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Agnostic_(data)"&gt;agnostic&lt;/a&gt;
+&lt;a class="reference external" href="https://pytorch.org/tutorials/beginner/dist_overview.html"&gt;distributed
+code&lt;/a&gt; that
+supports different platforms, hardware configurations (GPUs, TPUs) and
+communication frameworks is tedious. In this blog, we will discuss how
+&lt;a class="reference external" href="https://pytorch.org/ignite/"&gt;PyTorch-Ignite&lt;/a&gt; solves this problem
+with minimal code change.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://labs.quansight.org/blog/2021/06/distributed-made-easy-with-ignite/"&gt;Read more…&lt;/a&gt; (8 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Deep Learning</category><category>Distributed</category><category>Horovod</category><category>Machine Learning</category><category>PyTorch</category><category>PyTorch DDP</category><category>PyTorch XLA</category><category>PyTorch-Ignite</category><category>SLURM</category><guid>https://labs.quansight.org/blog/2021/06/distributed-made-easy-with-ignite/</guid><pubDate>Mon, 28 Jun 2021 08:00:00 GMT</pubDate></item><item><title>Working with pytest on PyTorch</title><link>https://labs.quansight.org/blog/2021/06/pytest-pytorch/</link><dc:creator>Philip Meier</dc:creator><description>&lt;div&gt;&lt;details&gt;
+&lt;summary&gt;Prerequisites&lt;/summary&gt;
+&lt;p&gt;
+&lt;/p&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;!--# PyTorch-Ignite: training and evaluating neural networks flexibly and transparently--&gt;
+&lt;p&gt;To run the code in this post yourself, make sure you have &lt;a href="https://pypi.org/project/torch/"&gt;&lt;code&gt;torch&lt;/code&gt;&lt;/a&gt;, &lt;a href="https://pypi.org/project/ipytest/"&gt;&lt;code&gt;ipytest&amp;gt;0.9&lt;/code&gt;&lt;/a&gt;, and the plugin to be introduced &lt;a href="https://github.com/Quansight/pytest-pytorch"&gt;&lt;code&gt;pytest-pytorch&lt;/code&gt;&lt;/a&gt; installed.&lt;/p&gt;
 
-&lt;!--div align="center"&gt;
-&lt;img width=512 src="https://i.ibb.co/WtbmXJQ/ignite-blog.jpg"/&gt;
-&lt;/div--&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 
-&lt;div align="center"&gt;
-&lt;img width="512" src="https://i.ibb.co/x8Bhqhj/habr-pytorch-ignite-image.png"&gt;
-&lt;/div&gt;&lt;div align="center"&gt;
-Authors: Victor Fomin (Quansight), Sylvain Desroziers (IFPEN, France)
-&lt;/div&gt;&lt;div&gt;
-This post is a general introduction of PyTorch-Ignite. It intends to give a brief but illustrative overview of what PyTorch-Ignite can offer for Deep Learning enthusiasts, professionals and researchers. Following the same philosophy as PyTorch, PyTorch-Ignite aims to keep it simple, flexible and extensible but performant and scalable.
-&lt;/div&gt;&lt;p&gt;&lt;a href="https://labs.quansight.org/blog/2020/09/pytorch-ignite/"&gt;Read more…&lt;/a&gt; (28 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>Deep Learning</category><category>Labs</category><category>Machine Learning</category><category>Neural Networks</category><category>Python</category><category>PyTorch</category><category>Tutorial</category><guid>https://labs.quansight.org/blog/2020/09/pytorch-ignite/</guid><pubDate>Thu, 10 Sep 2020 05:00:00 GMT</pubDate></item><item><title>Traitlets - an introduction &amp; use in Jupyter configuration management</title><link>https://labs.quansight.org/blog/2020/08/what-are-traitlets/</link><dc:creator>Matthias Bussonnier, Tony Fast</dc:creator><description>&lt;div&gt;&lt;p&gt;You have probably seen Traitlets in applications, you likely even use it. The package has nearly 5 million downloads
-on &lt;a href="https://anaconda.org/conda-forge/traitlets"&gt;conda-forge&lt;/a&gt; alone.&lt;/p&gt;
-&lt;h2&gt;But, what is Traitlets ?&lt;/h2&gt;
-&lt;p&gt;In this post we'll answer this question along with where Traitlets came from, its applications, and a bit of history.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://labs.quansight.org/blog/2020/08/what-are-traitlets/"&gt;Read more…&lt;/a&gt; (8 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>community</category><category>historical</category><category>IPython</category><category>Jupyter</category><category>Labs</category><category>Python</category><category>traitlets</category><guid>https://labs.quansight.org/blog/2020/08/what-are-traitlets/</guid><pubDate>Sun, 30 Aug 2020 09:00:00 GMT</pubDate></item><item><title>IPython reproducible builds</title><link>https://labs.quansight.org/blog/2020/08/ipython-reproducible-builds/</link><dc:creator>Matthias Bussonnier</dc:creator><description>&lt;div&gt;&lt;p&gt;Starting with IPython 7.16.1 (released in June 2020), you &lt;em&gt;should&lt;/em&gt; be able to recreate the sdist (&lt;code&gt;.tar.gz&lt;/code&gt;) and wheel
-(&lt;code&gt;.whl&lt;/code&gt;), and get byte for byte identical result to the wheels published on PyPI. This is a critical step toward being able
-to &lt;em&gt;trust&lt;/em&gt; your computing platforms, and a key component to improve efficiency of build and packaging platforms. It also
-potentially impacts fast conda environment creation for users. The following goes into some reasons for why you should care.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://labs.quansight.org/blog/2020/08/ipython-reproducible-builds/"&gt;Read more…&lt;/a&gt; (5 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>IPython</category><category>Labs</category><category>packaging</category><category>reproducible-builds</category><guid>https://labs.quansight.org/blog/2020/08/ipython-reproducible-builds/</guid><pubDate>Mon, 24 Aug 2020 12:00:00 GMT</pubDate></item><item><title>Introducing Versioned HDF5</title><link>https://labs.quansight.org/blog/2020/08/introducing-versioned-hdf5/</link><dc:creator>Melissa Weber Mendonça</dc:creator><description>&lt;div&gt;&lt;p&gt;The problem of storing and manipulating large amounts of data is a challenge in
-many scientific computing and industry applications. One of the standard data
-models for this is &lt;a href="https://support.hdfgroup.org/HDF5/whatishdf5.html"&gt;HDF5&lt;/a&gt;,
-an open technology that implements a hierarchical structure (similar to a
-file-system structure) for storing large amounts of possibly heterogeneous data
-within a single file. Data in an HDF5 file is organized into &lt;em&gt;groups&lt;/em&gt; and
-&lt;em&gt;datasets&lt;/em&gt;; you can think about these as the folders and files in your local
-file system, respectively. You can also optionally store metadata associated
-with each item in a file, which makes this a self-describing and powerful data
-storage model.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://labs.quansight.org/blog/2020/08/introducing-versioned-hdf5/"&gt;Read more…&lt;/a&gt; (3 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>h5py</category><category>HDF5</category><guid>https://labs.quansight.org/blog/2020/08/introducing-versioned-hdf5/</guid><pubDate>Fri, 21 Aug 2020 13:00:00 GMT</pubDate></item><item><title>Designing with and for developers</title><link>https://labs.quansight.org/blog/2020/08/designing-with-and-for-developers/</link><dc:creator>Isabela Presedo-Floyd</dc:creator><description>&lt;div&gt;&lt;p&gt;Open source is notorious for lack of design presence, enough so that my search
-to prove this fact has turned up nearly nothing. There’s many ways that such a
-gap in community might manifest, but one that I never anticipated was working
-with developers that had never interacted with a designer before.&lt;/p&gt;
-&lt;p&gt;A quick note for context: I’m writing this as a UX/UI designer working with
-open source projects for a little over a year. Because there are so many ways
-design processes can happen (enough to warrant its own blog post), this post is
-not intended to discuss design process deeply. My goal here is to pass on some
-of what I’ve learned that helps me design in this unusual space in hopes that
-it can help someone else. This post might seem most relevant for designers, but
-I think this experience could be helpful for developers as well.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://labs.quansight.org/blog/2020/08/designing-with-and-for-developers/"&gt;Read more…&lt;/a&gt; (5 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>design</category><guid>https://labs.quansight.org/blog/2020/08/designing-with-and-for-developers/</guid><pubDate>Wed, 05 Aug 2020 20:55:42 GMT</pubDate></item><item><title>Quansight Labs: what I learned in my first 3 months</title><link>https://labs.quansight.org/blog/2020/07/a-win-win-all-around/</link><dc:creator>Matti Picus</dc:creator><description>&lt;div&gt;&lt;p&gt;I joined Quansight at the beginning of April, splitting my time between
-PyTorch (as part of a larger Quansight team) and contributing to Quansight Labs
-supported community-driven projects in the Python scientific and data science
-software stack, primarily to NumPy.  I have found my next home; the people, the
-projects, and the atmosphere are an all around win-win for me and (I hope) for
-the projects to which I contribute.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://labs.quansight.org/blog/2020/07/a-win-win-all-around/"&gt;Read more…&lt;/a&gt; (2 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>funding</category><category>Labs</category><category>NumPy</category><category>PyTorch</category><guid>https://labs.quansight.org/blog/2020/07/a-win-win-all-around/</guid><pubDate>Tue, 21 Jul 2020 06:00:00 GMT</pubDate></item><item><title>Learn NixOS by turning a Raspberry Pi into a Wireless Router</title><link>https://labs.quansight.org/blog/2020/07/nixos-rpi-wifi-router/</link><dc:creator>Anthony Scopatz</dc:creator><description>&lt;div&gt;&lt;p&gt;I recently moved, and my new place has a relatively small footprint.  (Yes, I
-moved during the COVID-19 pandemic. And yes, it was crazy.) I quickly realized
-that was going to need a wireless router of some sort, or more formally, a wireless
-access point (WAP). Using my Ubuntu laptop's "wireless hotspot" capability was a
-nice temporary solution, but it had a few serious drawbacks.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://labs.quansight.org/blog/2020/07/nixos-rpi-wifi-router/"&gt;Read more…&lt;/a&gt; (14 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>NixOS</category><category>Raspberry Pi</category><category>Wireless Router</category><guid>https://labs.quansight.org/blog/2020/07/nixos-rpi-wifi-router/</guid><pubDate>Sat, 11 Jul 2020 05:39:56 GMT</pubDate></item></channel></rss>
+&lt;pre&gt;&lt;code&gt;pip install torch 'ipytest&amp;gt;0.9' pytest-pytorch&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Before we start testing, we need to configure &lt;a href="https://github.com/chmp/ipytest"&gt;&lt;code&gt;ipytest&lt;/code&gt;&lt;/a&gt;. We use the &lt;a href="https://github.com/chmp/ipytest#ipytestautoconfig"&gt;&lt;code&gt;ipytest.autoconfig()&lt;/code&gt;&lt;/a&gt; as base and add some &lt;a href="https://docs.pytest.org/en/stable/reference.html#command-line-flags"&gt;&lt;code&gt;pytest&lt;/code&gt; CLI flags&lt;/a&gt; in order to get a concise output.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [1]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;ipytest&lt;/span&gt;
+
+&lt;span class="n"&gt;ipytest&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;autoconfig&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;defopts&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;default_flags&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"--quiet"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"--disable-warnings"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_configure_ipytest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;additional_flags&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;collect_only&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;addopts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;default_flags&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;collect_only&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;addopts&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"--collect-only"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;addopts&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;extend&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;additional_flags&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    
+    &lt;span class="n"&gt;ipytest&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;addopts&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;addopts&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;enable_pytest_pytorch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;collect_only&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;_configure_ipytest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;collect_only&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;collect_only&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;disable_pytest_pytorch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;collect_only&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;_configure_ipytest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"--disable-pytest-pytorch"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;collect_only&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;collect_only&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    
+&lt;span class="n"&gt;disable_pytest_pytorch&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;If you work on &lt;a href="https://pytorch.org"&gt;PyTorch&lt;/a&gt; and like &lt;a href="https://pytest.org"&gt;&lt;code&gt;pytest&lt;/code&gt;&lt;/a&gt; you may have noticed that you cannot run some tests in the test suite using the default &lt;a href="https://pytest.org"&gt;&lt;code&gt;pytest&lt;/code&gt;&lt;/a&gt; double colon syntax &lt;code&gt;{MODULE}::TestFoo::test_bar&lt;/code&gt;.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [2]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;%%&lt;/span&gt;&lt;span class="k"&gt;run_pytest&lt;/span&gt;[clean] {MODULE}::TestFoo::test_bar
+
+from torch.testing._internal.common_utils import TestCase
+from torch.testing._internal.common_device_type import instantiate_device_type_tests
+
+
+class TestFoo(TestCase):
+    def test_bar(self, device):
+        assert False, "Don't worry, this is supposed to happen!"
+
+    
+instantiate_device_type_tests(TestFoo, globals(), only_for=["cpu"])
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;
+1 warning in 0.01s
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+&lt;div class="output_subarea output_stream output_stderr output_text"&gt;
+&lt;pre&gt;ERROR: not found: /home/user/tmp35zsok9u.py::TestFoo::test_bar
+(no name '/home/user/tmp35zsok9u.py::TestFoo::test_bar' in any of [&amp;lt;Module tmp35zsok9u.py&amp;gt;])
+
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;If the absence of this very basic &lt;a href="https://pytest.org"&gt;&lt;code&gt;pytest&lt;/code&gt;&lt;/a&gt; feature has ever been the source of frustration for you, you don't need to worry anymore. By installing the &lt;a href="https://github.com/Quansight/pytest-pytorch"&gt;&lt;code&gt;pytest-pytorch&lt;/code&gt;&lt;/a&gt; plugin with&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;pip install pytest-pytorch&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;or&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+
+&lt;pre&gt;&lt;code&gt;conda install -c conda-forge pytest-pytorch&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;you get the default &lt;a href="https://pytest.org"&gt;&lt;code&gt;pytest&lt;/code&gt;&lt;/a&gt; experience back even if your workflow involves running tests from within your IDE!&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;a href="https://labs.quansight.org/blog/2021/06/pytest-pytorch/"&gt;Read more…&lt;/a&gt; (8 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://labs.quansight.org/blog/2021/06/pytest-pytorch/</guid><pubDate>Wed, 23 Jun 2021 18:35:06 GMT</pubDate></item><item><title>Putting out the fire: Where do we start with accessibility in JupyterLab?</title><link>https://labs.quansight.org/blog/2021/05/putting-out-the-fire/</link><dc:creator>Isabela Presedo-Floyd</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;img alt="Multiple fires in an alternating pattern" src="https://labs.quansight.org/images/jlabaccess2.png"&gt;&lt;/p&gt;
+&lt;h3&gt;JupyterLab Accessibility Journey Part 2&lt;/h3&gt;
+&lt;p&gt;I want to be honest with you, I started asking accessibility questions
+in JupyterLab spaces while filled with anxiety. Anxiety that I was shouting
+into the void and no one else would work on accessibility with me. Anxiety
+that I didn’t have the skills or energy or knowledge to back up what I
+wanted to do. Anxiety that I was going to do it wrong and make JupyterLab
+even more inaccessible. Sometimes I still feel that way.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://labs.quansight.org/blog/2021/05/putting-out-the-fire/"&gt;Read more…&lt;/a&gt; (6 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Accessibility</category><category>JLabA11y</category><category>JupyterLab</category><guid>https://labs.quansight.org/blog/2021/05/putting-out-the-fire/</guid><pubDate>Tue, 25 May 2021 08:00:00 GMT</pubDate></item><item><title>Rethinking Jupyter Interactive Documentation</title><link>https://labs.quansight.org/blog/2021/05/rethinking-jupyter-documentation/</link><dc:creator>Matthias Bussonnier</dc:creator><description>&lt;div&gt;&lt;p&gt;Jupyter Notebook first release was 8 years ago – under the IPython Notebook
+name at the time. Even if notebooks were not invented by Jupyter; they were
+definitely democratized by it. Being Web powered allowed development of many
+changes in the Datascience world. Objects now often expose rich representation; from
+Pandas dataframes with as html tables, to more recent &lt;a href="https://github.com/scikit-learn/scikit-learn/pull/14180"&gt;Scikit-learn model&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Today I want to look into a topic that has not evolved much since, and I believe
+could use an upgrade. Accessing interactive Documentation when in a Jupyter
+session, and what it could become. At the end I'll link to my current prototype
+if you are adventurous.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://labs.quansight.org/blog/2021/05/rethinking-jupyter-documentation/"&gt;Read more…&lt;/a&gt; (7 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>documentation</category><category>Open-Source</category><category>Python</category><guid>https://labs.quansight.org/blog/2021/05/rethinking-jupyter-documentation/</guid><pubDate>Fri, 07 May 2021 00:01:00 GMT</pubDate></item><item><title>Spot the differences: what is new in Spyder 5?</title><link>https://labs.quansight.org/blog/2021/04/spot-the-diffenrences/</link><dc:creator>Isabela Presedo-Floyd and Juanita Gomez</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;img alt="Spyder 5 versus Spyder 4" src="https://labs.quansight.org/images/spyder5-header.png"&gt;&lt;/p&gt;
+&lt;p&gt;In case you missed it, Spyder 5 was released at the beginning of April! This 
+blog post is a conversation attempting to document the long and complex 
+process of improving Spyder's UI with this release. Portions lead by Juanita 
+Gomez are marked as &lt;strong&gt;Juanita&lt;/strong&gt;, and those lead by Isabela Presedo-Floyd are 
+marked as &lt;strong&gt;Isabela&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3&gt;What did we do?&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;[Juanita]&lt;/strong&gt; &lt;a href="https://www.spyder-ide.org/"&gt;Spyder&lt;/a&gt; was created more than 10 
+years ago and it has had the contributions of a great number of developers 
+who have written code, proposed ideas, opened issues and tested PRs in order 
+to build a piece of Spyder on their own. We (the Spyder team) have been lucky 
+to have such a great community of people contributing throughout the years, 
+but this is the first time that we decided to ask for help from an UX/UI 
+expert! Why? You might wonder. Having the contributions of this great amount 
+of people has resulted in inconsistencies around Spyder’s interface which we 
+didn’t stop to analyze until now. &lt;/p&gt;
+&lt;p&gt;When Isabela joined Quansight, we realized that we had an opportunity of 
+improving Spyder’s interface with her help. We thought her skill set was 
+everything we needed to make Spyder’s UI better.  So we started by reviewing 
+the results of a community survey from a few months ago and realized that 
+some of the most common feedback from users is related to its interface 
+(very crowded, not consistent, many colors). This is why we decided to start 
+a joint project with Isabela, (who we consider now part of the Spyder team) 
+called &lt;a href="https://github.com/spyder-ide/spyder/releases/tag/v5.0.0"&gt;Spyder 5&lt;/a&gt;!!!&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://labs.quansight.org/blog/2021/04/spot-the-diffenrences/"&gt;Read more…&lt;/a&gt; (8 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>release</category><category>Spyder</category><category>UX/UI</category><guid>https://labs.quansight.org/blog/2021/04/spot-the-diffenrences/</guid><pubDate>Fri, 16 Apr 2021 14:00:00 GMT</pubDate></item><item><title>A step towards educating with Spyder</title><link>https://labs.quansight.org/blog/2021/04/a-step-towards-educating-with-spyder/</link><dc:creator>Juanita Gomez</dc:creator><description>&lt;div&gt;&lt;p&gt;As a community manager in the Spyder team, I have been looking for ways of
+involving more users in the community and making Spyder useful for a larger
+number of people. With this, a new idea came: Education.&lt;/p&gt;
+&lt;p&gt;For the past months, we have been wondering with the team whether Spyder
+could also serve as a teaching-learning platform, especially in this era
+where remote instruction has become necessary. We submitted a proposal to the
+Essential Open Source Software for Science (EOSS) program of the Chan
+Zuckerberg Initiative, during its third cycle, with the idea of providing a
+simple way inside Spyder to create and share interactive tutorials on topics
+relevant to scientific research. Unfortunately, we didn’t get this funding,
+but we didn’t let this great idea die.&lt;/p&gt;
+&lt;p&gt;We submitted a second proposal to the &lt;a href="https://www.python.org/psf/"&gt;Python Software Foundation&lt;/a&gt;
+from which we were awarded $4000. For me, this is the perfect opportunity for
+us to take the first step towards using Spyder for education.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://labs.quansight.org/blog/2021/04/a-step-towards-educating-with-spyder/"&gt;Read more…&lt;/a&gt; (2 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>community</category><category>funding</category><category>grant</category><category>Spyder</category><guid>https://labs.quansight.org/blog/2021/04/a-step-towards-educating-with-spyder/</guid><pubDate>Sun, 11 Apr 2021 14:00:00 GMT</pubDate></item><item><title>PyTorch TensorIterator Internals - 2021 Update</title><link>https://labs.quansight.org/blog/2021/04/pytorch-tensoriterator-internals-update/</link><dc:creator>Kurt Mohler</dc:creator><description>&lt;div&gt;&lt;p&gt;For contributors to the PyTorch codebase, one of the most commonly encountered
+C++ classes is
+&lt;a href="https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/TensorIterator.h"&gt;&lt;code&gt;TensorIterator&lt;/code&gt;&lt;/a&gt;.
+&lt;code&gt;TensorIterator&lt;/code&gt; offers a standardized way to iterate over elements of
+a tensor, automatically parallelizing operations, while abstracting device and
+data type details.&lt;/p&gt;
+&lt;p&gt;In April 2020, Sameer Deshmukh wrote a blog article discussing
+&lt;a href="https://labs.quansight.org/blog/2020/04/pytorch-tensoriterator-internals/index.html"&gt;PyTorch TensorIterator Internals&lt;/a&gt;. Recently,
+however, the interface has changed significantly. This post describes how to
+use the current interface as of April 2021. Much of the information from the
+previous article is directly copied here, but with updated API calls and some
+extra details.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://labs.quansight.org/blog/2021/04/pytorch-tensoriterator-internals-update/"&gt;Read more…&lt;/a&gt; (8 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><guid>https://labs.quansight.org/blog/2021/04/pytorch-tensoriterator-internals-update/</guid><pubDate>Fri, 09 Apr 2021 14:00:00 GMT</pubDate></item><item><title>Accessibility: Who's Responsible?</title><link>https://labs.quansight.org/blog/2021/03/accessibility-whos-responsible/</link><dc:creator>Isabela Presedo-Floyd</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;img alt="Fingers and question marks pointing in every direction" src="https://labs.quansight.org/images/jlabaccess1.png"&gt;&lt;/p&gt;
+&lt;h3&gt;JupyterLab Accessibility Journey Part 1&lt;/h3&gt;
+&lt;p&gt;For the past few months, I've been part of a group of people in the JupyterLab community 
+who've committed to start chipping away at the many accessibility failings of JupyterLab. 
+I find this work is critical, fascinating, and a learning experience for everyone involved. 
+So I'm going to document my personal experience and lessons I've learned in a series of blog 
+posts. Welcome!&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://labs.quansight.org/blog/2021/03/accessibility-whos-responsible/"&gt;Read more…&lt;/a&gt; (6 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Accessibility</category><category>JLabA11y</category><category>JupyterLab</category><guid>https://labs.quansight.org/blog/2021/03/accessibility-whos-responsible/</guid><pubDate>Thu, 25 Mar 2021 08:00:00 GMT</pubDate></item><item><title>Enhancements to Numba's guvectorize decorator</title><link>https://labs.quansight.org/blog/2021/02/enhancements-to-numba-guvectorize-decorator/</link><dc:creator>Guilherme Leobas</dc:creator><description>&lt;div&gt;&lt;p&gt;Starting from Numba 0.53, Numba will ship with an enhanced version of the &lt;code&gt;@guvectorize&lt;/code&gt; decorator. Similar to the &lt;a href="https://numba.pydata.org/numba-doc/dev/user/vectorize.html#the-vectorize-decorator"&gt;@vectorize&lt;/a&gt; decorator, &lt;a href="https://numba.pydata.org/numba-doc/dev/user/vectorize.html#the-guvectorize-decorator"&gt;@guvectorize&lt;/a&gt; now has two modes of operation:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Eager, or decoration-time compilation and&lt;/li&gt;
+&lt;li&gt;Lazy, or call-time compilation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Before, only the eager approach was supported. In this mode, users are required to provide a list of concrete supported types beforehand as its first argument. Now, this list can be omitted if desired and as one calls it, Numba dynamically generates new kernels for previously unsupported types.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://labs.quansight.org/blog/2021/02/enhancements-to-numba-guvectorize-decorator/"&gt;Read more…&lt;/a&gt; (3 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>Labs</category><category>Numba</category><guid>https://labs.quansight.org/blog/2021/02/enhancements-to-numba-guvectorize-decorator/</guid><pubDate>Thu, 25 Feb 2021 08:00:00 GMT</pubDate></item></channel></rss>

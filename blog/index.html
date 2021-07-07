@@ -14,7 +14,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
 <link rel="canonical" href="https://labs.quansight.org/blog/">
 <link rel="icon" href="../favicon.ico" sizes="16x16">
-<link rel="next" href="index-4.html" type="text/html">
+<link rel="next" href="index-6.html" type="text/html">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
    tex2jax: {
@@ -32,7 +32,7 @@ MathJax.Hub.Config({
   gtag('js', new Date());
 
   gtag('config', 'UA-163785882-1');
-</script>
+</script><link rel="stylesheet" type="text/css" href="../assets/css/tipuesearch.css">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -44,7 +44,7 @@ navbar-dark bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
         <a class="navbar-brand" href="https://labs.quansight.org/">
-            <img src="../images/quansight_labs_logo_white.png" alt="Quansight Labs" id="logo" class="d-inline-block align-top"></a>
+            <img src="../images/QuansightLabs_logo_V1_white.png" alt="Quansight Labs" id="logo" class="d-inline-block align-top"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -72,7 +72,15 @@ navbar-dark bg-dark
                 
             </li>
 </ul>
-<ul class="navbar-nav navbar-right"></ul>
+<form class="navbar-form navbar-left" action="../search" role="search">
+    <div class="form-group">
+        <input type="text" class="form-control" id="tipue_search_input" name="q" placeholder="Search…" autocomplete="off">
+</div>
+    <input type="submit" value="Local Search" style="visibility: hidden;"><!-- button type="submit" class="btn btn-default">Submit</button -->
+</form>
+
+
+            <ul class="navbar-nav navbar-right"></ul>
 </div>
 <!-- /.navbar-collapse -->
     </div>
@@ -95,117 +103,51 @@ navbar-dark bg-dark
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="2020/11/manylinux1-is-obsolete-manylinux2010-is-almost-eol-what-is-next/" class="u-url">Manylinux1 is obsolete, manylinux2010 is almost EOL, what is next?</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="2021/07/pyflyby-improving-efficiency-of-jupyter-interactive-sessions/" class="u-url">Pyflyby: Improving Efficiency of Jupyter Interactive Sessions</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                <a href="../authors/matti-picus/">Matti Picus</a>
+                <a href="../authors/matthias-bussonnier-aaron-meurer/">Matthias Bussonnier, Aaron Meurer,</a>
             </span></p>
             <p class="dateline">
-            <a href="2020/11/manylinux1-is-obsolete-manylinux2010-is-almost-eol-what-is-next/" rel="bookmark">
-            <time class="published dt-published" datetime="2020-11-12T14:00:06-05:00" itemprop="datePublished" title="2020-11-12">2020-11-12</time></a>
+            <a href="2021/07/pyflyby-improving-efficiency-of-jupyter-interactive-sessions/" rel="bookmark">
+            <time class="published dt-published" datetime="2021-07-07T10:00:00Z" itemprop="datePublished" title="2021-07-07">2021-07-07</time></a>
             </p>
         </div>
             
         <div>
             
         <ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="../categories/manylinux/" rel="tag">manylinux</a></li>
-            <li><a class="tag p-category" href="../categories/packaging/" rel="tag">packaging</a></li>
-            <li><a class="tag p-category" href="../categories/pip/" rel="tag">pip</a></li>
+<li><a class="tag p-category" href="../categories/deshaw/" rel="tag">Deshaw</a></li>
+            <li><a class="tag p-category" href="../categories/labs/" rel="tag">Labs</a></li>
+            <li><a class="tag p-category" href="../categories/pyflyby/" rel="tag">Pyflyby</a></li>
         </ul>
 </div>
     </header><div class="p-summary entry-summary">
     <div>
-<p>The basic installation format for users who install packages via <code>pip</code> is
-the wheel format. Wheel names are composed of four parts: a
-package-name-and-version tag (which can be further broken down), a Python tag,
-an ABI tag, and a platform tag. More information on the tags can be found in
-<a href="https://www.python.org/dev/peps/pep-0425">PEP 425</a>.  So a package like NumPy
-will be available on PyPI as <code>numpy-1.19.2-cp36-cp36m-win_amd64.whl</code> for 64-bit
-windows and <code>numpy-1.19.2-cp36-cp36m-macosx_10_9_x86_64.whl</code> for macOS. Note
-that only the plaform tag <code>win_amd64</code> or <code>macosx_10_9_x86_64</code> differs. </p>
-<p>But what about Linux? There is no single, vendor controlled, "Linux platform"
-e.g., Ubuntu, RedHat, Fedora, Debian, FreeBSD all package software at slightly
-different versions. What most Linux distributions do have in common is the
-glibc runtime library, and a smattering of various additional system libraries.
-So it is possible to define a least common denominator (LCD) of software
-expected to be on a Linux platform (exceptions apply, e.g. non-glibc
-distributions).</p>
-<p>The decision to converge on a LCD common platform gave birth to the
-<a href="https://www.python.org/dev/peps/pep-0513/">manylinux1</a> standard. Going back
-to our example, numpy is available as
-<code>numpy-1.19.2-cp36-cp36m-manylinux1_x86_64.whl</code>.</p>
-<p>The first manylinux standard, manylinux1, was based on CentOS5 which has <a href="https://endoflife.software/operating-systems/linux/centos">been
-obsolete</a> since
-March 2017. The subsequent manylinux2010 standard is based on CentOS6, which
-will hit end-of-life in December 2020. The manylinux2014 standard still has some
-breathing room. Based on CentOS7, it will reach end-of-life in July 2024.</p>
-<p>So what is next for <code>manylinux</code>, and what <code>manylinux</code> should users and package
-maintainers use?</p>
-<p class="more"><a href="2020/11/manylinux1-is-obsolete-manylinux2010-is-almost-eol-what-is-next/">Read more…</a></p>
+<p>Interruption hinder productivity more than interruption. A notification, random
+realization, or unrelated error can derail one's train of thought when deep in a
+complex analysis – a frustrating experience.</p>
+<p>In the software development context, forgetting to import a statement in an
+interactive Jupyter session is such an experience. This can be especially
+frustrating when using typical abbreviations, like <code>np</code>, <code>pd</code>, <code>plt</code>, where the
+meaning is obvious to the human reader, but not to the computer. The
+time-to-first-plot, and ability to quickly cleanup one's notebook afterward
+are critical to an enjoyable and efficient workflow.</p>
+<p>In this blogpost we present <a href="https://github.com/deshaw/pyflyby">pyflyby</a>, a
+project and an extension to IPython and
+<a href="https://github.com/deshaw/jupyterlab-pyflyby">JupyterLab</a>, that, among many
+things, automatically inserts imports and tidies Python files and notebooks.</p>
+<p class="more"><a href="2021/07/pyflyby-improving-efficiency-of-jupyter-interactive-sessions/">Read more…</a></p>
 </div>
     </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="2020/09/design-of-the-versioned-hdf5-library/" class="u-url">Design of the Versioned HDF5 Library</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                <a href="../authors/aaron-meurer/">Aaron Meurer</a>
-            </span></p>
-            <p class="dateline">
-            <a href="2020/09/design-of-the-versioned-hdf5-library/" rel="bookmark">
-            <time class="published dt-published" datetime="2020-09-29T11:00:00-05:00" itemprop="datePublished" title="2020-09-29">2020-09-29</time></a>
-            </p>
-        </div>
-            
-        <div>
-            
-        <ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="../categories/h5py/" rel="tag">h5py</a></li>
-            <li><a class="tag p-category" href="../categories/hdf5/" rel="tag">HDF5</a></li>
-        </ul>
-</div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<p>In a <a href="https://labs.quansight.org/blog/2020/08/introducing-versioned-hdf5/">previous
-post</a>, we
-introduced the Versioned HDF5 library and described some of its features. In
-this post, we'll go into detail on how the underlying design of the library
-works on a technical level.</p>
-<p class="more"><a href="2020/09/design-of-the-versioned-hdf5-library/">Read more…</a></p>
-</div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="2020/09/versioned-hdf5-performance/" class="u-url">Performance of the Versioned HDF5 Library</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                <a href="../authors/melissa-weber-mendonca/">Melissa Weber Mendonça</a>
-            </span></p>
-            <p class="dateline">
-            <a href="2020/09/versioned-hdf5-performance/" rel="bookmark">
-            <time class="published dt-published" datetime="2020-09-11T06:00:00-05:00" itemprop="datePublished" title="2020-09-11">2020-09-11</time></a>
-            </p>
-        </div>
-            
-        <div>
-            
-        <ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="../categories/h5py/" rel="tag">h5py</a></li>
-            <li><a class="tag p-category" href="../categories/hdf5/" rel="tag">HDF5</a></li>
-        </ul>
-</div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<p>In several industry and science applications, a filesystem-like storage model such as <a href="https://www.hdfgroup.org/solutions/hdf5/">HDF5</a> is the more appropriate solution for manipulating large amounts of data. However, suppose that data changes over time. In that case, it's not obvious how to track those different versions, since HDF5 is a binary format and is not well suited for traditional version control systems and tools. </p>
-<p>In a <a href="https://labs.quansight.org/blog/2020/08/introducing-versioned-hdf5/">previous post</a>, we introduced the Versioned HDF5 library, which implements a mechanism for storing binary data sets in a versioned way that feels natural to users of other version control systems, and described some of its features. In this post, we'll show some of the performance analysis we did while developing the library, hopefully making the case that reading and writing versioned HDF5 files can be done with a nice, intuitive API while being as efficient as possible. The tests presented here show that using the Versioned HDF5 library results in reduced disk space usage, and further reductions in this area can be achieved with the use of HDF5/<a href="https://www.h5py.org">h5py</a>-provided compression algorithms. That only comes at a cost of &lt;10x file writing speed.</p>
-<p class="more"><a href="2020/09/versioned-hdf5-performance/">Read more…</a></p>
-</div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="2020/09/pytorch-ignite/" class="u-url">PyTorch-Ignite: training and evaluating neural networks flexibly and transparently</a></h1>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="2021/06/distributed-made-easy-with-ignite/" class="u-url">Distributed Training Made Easy with PyTorch-Ignite</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 <a href="../authors/victor-fomin/">Victor Fomin</a>
             </span></p>
             <p class="dateline">
-            <a href="2020/09/pytorch-ignite/" rel="bookmark">
-            <time class="published dt-published" datetime="2020-09-10T00:00:00-05:00" itemprop="datePublished" title="2020-09-10">2020-09-10</time></a>
+            <a href="2021/06/distributed-made-easy-with-ignite/" rel="bookmark">
+            <time class="published dt-published" datetime="2021-06-28T08:00:00Z" itemprop="datePublished" title="2021-06-28">2021-06-28</time></a>
             </p>
         </div>
             
@@ -213,48 +155,365 @@ works on a technical level.</p>
             
         <ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../categories/deep-learning/" rel="tag">Deep Learning</a></li>
-            <li><a class="tag p-category" href="../categories/labs/" rel="tag">Labs</a></li>
+            <li><a class="tag p-category" href="../categories/distributed/" rel="tag">Distributed</a></li>
+            <li><a class="tag p-category" href="../categories/horovod/" rel="tag">Horovod</a></li>
             <li><a class="tag p-category" href="../categories/machine-learning/" rel="tag">Machine Learning</a></li>
-            <li><a class="tag p-category" href="../categories/neural-networks/" rel="tag">Neural Networks</a></li>
-            <li><a class="tag p-category" href="../categories/python/" rel="tag">Python</a></li>
             <li><a class="tag p-category" href="../categories/pytorch/" rel="tag">PyTorch</a></li>
-            <li><a class="tag p-category" href="../categories/tutorial/" rel="tag">Tutorial</a></li>
+            <li><a class="tag p-category" href="../categories/pytorch-ddp/" rel="tag">PyTorch DDP</a></li>
+            <li><a class="tag p-category" href="../categories/pytorch-xla/" rel="tag">PyTorch XLA</a></li>
+            <li><a class="tag p-category" href="../categories/pytorch-ignite/" rel="tag">PyTorch-Ignite</a></li>
+            <li><a class="tag p-category" href="../categories/slurm/" rel="tag">SLURM</a></li>
         </ul>
 </div>
     </header><div class="p-summary entry-summary">
-    <div class="cell border-box-sizing text_cell rendered">
+    <div>
+<img alt="PyTorch-Ignite logo" src="../images/pytorch-ignite/ignite_logo_mixed.png"><p>Authors: <a class="reference external" href="https://github.com/fco-dv">François Cokelaer</a>,
+<a class="reference external" href="https://github.com/Priyansi">Priyansi</a>, <a class="reference external" href="https://github.com/sdesrozis/">Sylvain
+Desroziers</a>, <a class="reference external" href="https://github.com/vfdev-5">Victor
+Fomin</a></p>
+<p>Writing <a class="reference external" href="https://en.wikipedia.org/wiki/Agnostic_(data)">agnostic</a>
+<a class="reference external" href="https://pytorch.org/tutorials/beginner/dist_overview.html">distributed
+code</a> that
+supports different platforms, hardware configurations (GPUs, TPUs) and
+communication frameworks is tedious. In this blog, we will discuss how
+<a class="reference external" href="https://pytorch.org/ignite/">PyTorch-Ignite</a> solves this problem
+with minimal code change.</p>
+<p class="more"><a href="2021/06/distributed-made-easy-with-ignite/">Read more…</a></p>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="2021/06/pytest-pytorch/" class="u-url">Working with pytest on PyTorch</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="../authors/philip-meier/">Philip Meier</a>
+            </span></p>
+            <p class="dateline">
+            <a href="2021/06/pytest-pytorch/" rel="bookmark">
+            <time class="published dt-published" datetime="2021-06-23T18:35:06Z" itemprop="datePublished" title="2021-06-23">2021-06-23</time></a>
+            </p>
+        </div>
+            
+        <div>
+            
+
+        </div>
+    </header><div class="p-summary entry-summary">
+    <div>
+<details><summary>Prerequisites</summary><p>
+</p>
+<div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<!--# PyTorch-Ignite: training and evaluating neural networks flexibly and transparently-->
+<p>To run the code in this post yourself, make sure you have <a href="https://pypi.org/project/torch/"><code>torch</code></a>, <a href="https://pypi.org/project/ipytest/"><code>ipytest&gt;0.9</code></a>, and the plugin to be introduced <a href="https://github.com/Quansight/pytest-pytorch"><code>pytest-pytorch</code></a> installed.</p>
 
-<!--div align="center">
-<img width=512 src="https://i.ibb.co/WtbmXJQ/ignite-blog.jpg"/>
-</div-->
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 
-<div align="center">
-<img width="512" src="https://i.ibb.co/x8Bhqhj/habr-pytorch-ignite-image.png">
+<pre><code>pip install torch 'ipytest&gt;0.9' pytest-pytorch</code></pre>
+
 </div>
-<div align="center">
-Authors: Victor Fomin (Quansight), Sylvain Desroziers (IFPEN, France)
 </div>
-<div>
-This post is a general introduction of PyTorch-Ignite. It intends to give a brief but illustrative overview of what PyTorch-Ignite can offer for Deep Learning enthusiasts, professionals and researchers. Following the same philosophy as PyTorch, PyTorch-Ignite aims to keep it simple, flexible and extensible but performant and scalable.
 </div>
-<p class="more"><a href="2020/09/pytorch-ignite/">Read more…</a></p>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Before we start testing, we need to configure <a href="https://github.com/chmp/ipytest"><code>ipytest</code></a>. We use the <a href="https://github.com/chmp/ipytest#ipytestautoconfig"><code>ipytest.autoconfig()</code></a> as base and add some <a href="https://docs.pytest.org/en/stable/reference.html#command-line-flags"><code>pytest</code> CLI flags</a> in order to get a concise output.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">ipytest</span>
+
+<span class="n">ipytest</span><span class="o">.</span><span class="n">autoconfig</span><span class="p">(</span><span class="n">defopts</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">default_flags</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"--quiet"</span><span class="p">,</span> <span class="s2">"--disable-warnings"</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_configure_ipytest</span><span class="p">(</span><span class="o">*</span><span class="n">additional_flags</span><span class="p">,</span> <span class="n">collect_only</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">addopts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">default_flags</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">collect_only</span><span class="p">:</span>
+        <span class="n">addopts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"--collect-only"</span><span class="p">)</span>
+    <span class="n">addopts</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">additional_flags</span><span class="p">)</span>
+    
+    <span class="n">ipytest</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">addopts</span><span class="o">=</span><span class="n">addopts</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">enable_pytest_pytorch</span><span class="p">(</span><span class="n">collect_only</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">_configure_ipytest</span><span class="p">(</span><span class="n">collect_only</span><span class="o">=</span><span class="n">collect_only</span><span class="p">)</span>
+    
+<span class="k">def</span> <span class="nf">disable_pytest_pytorch</span><span class="p">(</span><span class="n">collect_only</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">_configure_ipytest</span><span class="p">(</span><span class="s2">"--disable-pytest-pytorch"</span><span class="p">,</span> <span class="n">collect_only</span><span class="o">=</span><span class="n">collect_only</span><span class="p">)</span>
+    
+<span class="n">disable_pytest_pytorch</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</details><div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you work on <a href="https://pytorch.org">PyTorch</a> and like <a href="https://pytest.org"><code>pytest</code></a> you may have noticed that you cannot run some tests in the test suite using the default <a href="https://pytest.org"><code>pytest</code></a> double colon syntax <code>{MODULE}::TestFoo::test_bar</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">run_pytest</span>[clean] {MODULE}::TestFoo::test_bar
+
+from torch.testing._internal.common_utils import TestCase
+from torch.testing._internal.common_device_type import instantiate_device_type_tests
+
+
+class TestFoo(TestCase):
+    def test_bar(self, device):
+        assert False, "Don't worry, this is supposed to happen!"
+
+    
+instantiate_device_type_tests(TestFoo, globals(), only_for=["cpu"])
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+1 warning in 0.01s
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>ERROR: not found: /home/user/tmp35zsok9u.py::TestFoo::test_bar
+(no name '/home/user/tmp35zsok9u.py::TestFoo::test_bar' in any of [&lt;Module tmp35zsok9u.py&gt;])
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If the absence of this very basic <a href="https://pytest.org"><code>pytest</code></a> feature has ever been the source of frustration for you, you don't need to worry anymore. By installing the <a href="https://github.com/Quansight/pytest-pytorch"><code>pytest-pytorch</code></a> plugin with</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>pip install pytest-pytorch</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>or</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>conda install -c conda-forge pytest-pytorch</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>you get the default <a href="https://pytest.org"><code>pytest</code></a> experience back even if your workflow involves running tests from within your IDE!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p class="more"><a href="2021/06/pytest-pytorch/">Read more…</a></p>
+</div>
 </div>
 </div>
 </div>
     </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="2020/08/what-are-traitlets/" class="u-url">Traitlets - an introduction &amp; use in Jupyter configuration management</a></h1>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="2021/05/putting-out-the-fire/" class="u-url">Putting out the fire: Where do we start with accessibility in JupyterLab?</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                <a href="../authors/matthias-bussonnier-tony-fast/">Matthias Bussonnier, Tony Fast</a>
+                <a href="../authors/isabela-presedo-floyd/">Isabela Presedo-Floyd</a>
             </span></p>
             <p class="dateline">
-            <a href="2020/08/what-are-traitlets/" rel="bookmark">
-            <time class="published dt-published" datetime="2020-08-30T09:00:00Z" itemprop="datePublished" title="2020-08-30">2020-08-30</time></a>
+            <a href="2021/05/putting-out-the-fire/" rel="bookmark">
+            <time class="published dt-published" datetime="2021-05-25T08:00:00Z" itemprop="datePublished" title="2021-05-25">2021-05-25</time></a>
+            </p>
+        </div>
+            
+        <div>
+            
+        <ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../categories/accessibility/" rel="tag">Accessibility</a></li>
+            <li><a class="tag p-category" href="../categories/jlaba11y/" rel="tag">JLabA11y</a></li>
+            <li><a class="tag p-category" href="../categories/jupyterlab/" rel="tag">JupyterLab</a></li>
+        </ul>
+</div>
+    </header><div class="p-summary entry-summary">
+    <div>
+<p><img alt="Multiple fires in an alternating pattern" src="../images/jlabaccess2.png"></p>
+<h3>JupyterLab Accessibility Journey Part 2</h3>
+<p>I want to be honest with you, I started asking accessibility questions
+in JupyterLab spaces while filled with anxiety. Anxiety that I was shouting
+into the void and no one else would work on accessibility with me. Anxiety
+that I didn’t have the skills or energy or knowledge to back up what I
+wanted to do. Anxiety that I was going to do it wrong and make JupyterLab
+even more inaccessible. Sometimes I still feel that way.</p>
+<p class="more"><a href="2021/05/putting-out-the-fire/">Read more…</a></p>
+</div>
+    </div>
+    </article><article class="h-entry post-markdown" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="2021/05/rethinking-jupyter-documentation/" class="u-url">Rethinking Jupyter Interactive Documentation</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="../authors/matthias-bussonnier/">Matthias Bussonnier</a>
+            </span></p>
+            <p class="dateline">
+            <a href="2021/05/rethinking-jupyter-documentation/" rel="bookmark">
+            <time class="published dt-published" datetime="2021-05-07T00:01:00Z" itemprop="datePublished" title="2021-05-07">2021-05-07</time></a>
+            </p>
+        </div>
+            
+        <div>
+            
+        <ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../categories/documentation/" rel="tag">documentation</a></li>
+            <li><a class="tag p-category" href="../categories/open-source/" rel="tag">Open-Source</a></li>
+            <li><a class="tag p-category" href="../categories/python/" rel="tag">Python</a></li>
+        </ul>
+</div>
+    </header><div class="p-summary entry-summary">
+    <div>
+<p>Jupyter Notebook first release was 8 years ago – under the IPython Notebook
+name at the time. Even if notebooks were not invented by Jupyter; they were
+definitely democratized by it. Being Web powered allowed development of many
+changes in the Datascience world. Objects now often expose rich representation; from
+Pandas dataframes with as html tables, to more recent <a href="https://github.com/scikit-learn/scikit-learn/pull/14180">Scikit-learn model</a>.</p>
+<p>Today I want to look into a topic that has not evolved much since, and I believe
+could use an upgrade. Accessing interactive Documentation when in a Jupyter
+session, and what it could become. At the end I'll link to my current prototype
+if you are adventurous.</p>
+<p class="more"><a href="2021/05/rethinking-jupyter-documentation/">Read more…</a></p>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="2021/04/spot-the-diffenrences/" class="u-url">Spot the differences: what is new in Spyder 5?</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="../authors/isabela-presedo-floyd-and-juanita-gomez/">Isabela Presedo-Floyd and Juanita Gomez</a>
+            </span></p>
+            <p class="dateline">
+            <a href="2021/04/spot-the-diffenrences/" rel="bookmark">
+            <time class="published dt-published" datetime="2021-04-16T08:00:00-06:00" itemprop="datePublished" title="2021-04-16">2021-04-16</time></a>
+            </p>
+        </div>
+            
+        <div>
+            
+        <ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../categories/release/" rel="tag">release</a></li>
+            <li><a class="tag p-category" href="../categories/spyder/" rel="tag">Spyder</a></li>
+            <li><a class="tag p-category" href="../categories/uxui/" rel="tag">UX/UI</a></li>
+        </ul>
+</div>
+    </header><div class="p-summary entry-summary">
+    <div>
+<p><img alt="Spyder 5 versus Spyder 4" src="../images/spyder5-header.png"></p>
+<p>In case you missed it, Spyder 5 was released at the beginning of April! This 
+blog post is a conversation attempting to document the long and complex 
+process of improving Spyder's UI with this release. Portions lead by Juanita 
+Gomez are marked as <strong>Juanita</strong>, and those lead by Isabela Presedo-Floyd are 
+marked as <strong>Isabela</strong>.</p>
+<h3>What did we do?</h3>
+<p><strong>[Juanita]</strong> <a href="https://www.spyder-ide.org/">Spyder</a> was created more than 10 
+years ago and it has had the contributions of a great number of developers 
+who have written code, proposed ideas, opened issues and tested PRs in order 
+to build a piece of Spyder on their own. We (the Spyder team) have been lucky 
+to have such a great community of people contributing throughout the years, 
+but this is the first time that we decided to ask for help from an UX/UI 
+expert! Why? You might wonder. Having the contributions of this great amount 
+of people has resulted in inconsistencies around Spyder’s interface which we 
+didn’t stop to analyze until now. </p>
+<p>When Isabela joined Quansight, we realized that we had an opportunity of 
+improving Spyder’s interface with her help. We thought her skill set was 
+everything we needed to make Spyder’s UI better.  So we started by reviewing 
+the results of a community survey from a few months ago and realized that 
+some of the most common feedback from users is related to its interface 
+(very crowded, not consistent, many colors). This is why we decided to start 
+a joint project with Isabela, (who we consider now part of the Spyder team) 
+called <a href="https://github.com/spyder-ide/spyder/releases/tag/v5.0.0">Spyder 5</a>!!!</p>
+<p class="more"><a href="2021/04/spot-the-diffenrences/">Read more…</a></p>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="2021/04/a-step-towards-educating-with-spyder/" class="u-url">A step towards educating with Spyder</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                <a href="../authors/juanita-gomez/">Juanita Gomez</a>
+            </span></p>
+            <p class="dateline">
+            <a href="2021/04/a-step-towards-educating-with-spyder/" rel="bookmark">
+            <time class="published dt-published" datetime="2021-04-11T08:00:00-06:00" itemprop="datePublished" title="2021-04-11">2021-04-11</time></a>
             </p>
         </div>
             
@@ -262,176 +521,120 @@ This post is a general introduction of PyTorch-Ignite. It intends to give a brie
             
         <ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../categories/community/" rel="tag">community</a></li>
-            <li><a class="tag p-category" href="../categories/historical/" rel="tag">historical</a></li>
-            <li><a class="tag p-category" href="../categories/ipython/" rel="tag">IPython</a></li>
-            <li><a class="tag p-category" href="../categories/jupyter/" rel="tag">Jupyter</a></li>
-            <li><a class="tag p-category" href="../categories/labs/" rel="tag">Labs</a></li>
-            <li><a class="tag p-category" href="../categories/python/" rel="tag">Python</a></li>
-            <li><a class="tag p-category" href="../categories/traitlets/" rel="tag">traitlets</a></li>
+            <li><a class="tag p-category" href="../categories/funding/" rel="tag">funding</a></li>
+            <li><a class="tag p-category" href="../categories/grant/" rel="tag">grant</a></li>
+            <li><a class="tag p-category" href="../categories/spyder/" rel="tag">Spyder</a></li>
         </ul>
 </div>
     </header><div class="p-summary entry-summary">
     <div>
-<p>You have probably seen Traitlets in applications, you likely even use it. The package has nearly 5 million downloads
-on <a href="https://anaconda.org/conda-forge/traitlets">conda-forge</a> alone.</p>
-<h2>But, what is Traitlets ?</h2>
-<p>In this post we'll answer this question along with where Traitlets came from, its applications, and a bit of history.</p>
-<p class="more"><a href="2020/08/what-are-traitlets/">Read more…</a></p>
+<p>As a community manager in the Spyder team, I have been looking for ways of
+involving more users in the community and making Spyder useful for a larger
+number of people. With this, a new idea came: Education.</p>
+<p>For the past months, we have been wondering with the team whether Spyder
+could also serve as a teaching-learning platform, especially in this era
+where remote instruction has become necessary. We submitted a proposal to the
+Essential Open Source Software for Science (EOSS) program of the Chan
+Zuckerberg Initiative, during its third cycle, with the idea of providing a
+simple way inside Spyder to create and share interactive tutorials on topics
+relevant to scientific research. Unfortunately, we didn’t get this funding,
+but we didn’t let this great idea die.</p>
+<p>We submitted a second proposal to the <a href="https://www.python.org/psf/">Python Software Foundation</a>
+from which we were awarded $4000. For me, this is the perfect opportunity for
+us to take the first step towards using Spyder for education.</p>
+<p class="more"><a href="2021/04/a-step-towards-educating-with-spyder/">Read more…</a></p>
 </div>
     </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="2020/08/ipython-reproducible-builds/" class="u-url">IPython reproducible builds</a></h1>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="2021/04/pytorch-tensoriterator-internals-update/" class="u-url">PyTorch TensorIterator Internals - 2021 Update</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                <a href="../authors/matthias-bussonnier/">Matthias Bussonnier</a>
+                <a href="../authors/kurt-mohler/">Kurt Mohler</a>
             </span></p>
             <p class="dateline">
-            <a href="2020/08/ipython-reproducible-builds/" rel="bookmark">
-            <time class="published dt-published" datetime="2020-08-24T12:00:00Z" itemprop="datePublished" title="2020-08-24">2020-08-24</time></a>
+            <a href="2021/04/pytorch-tensoriterator-internals-update/" rel="bookmark">
+            <time class="published dt-published" datetime="2021-04-09T08:00:00-06:00" itemprop="datePublished" title="2021-04-09">2021-04-09</time></a>
             </p>
         </div>
             
         <div>
             
-        <ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="../categories/ipython/" rel="tag">IPython</a></li>
-            <li><a class="tag p-category" href="../categories/labs/" rel="tag">Labs</a></li>
-            <li><a class="tag p-category" href="../categories/packaging/" rel="tag">packaging</a></li>
-            <li><a class="tag p-category" href="../categories/reproducible-builds/" rel="tag">reproducible-builds</a></li>
-        </ul>
-</div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<p>Starting with IPython 7.16.1 (released in June 2020), you <em>should</em> be able to recreate the sdist (<code>.tar.gz</code>) and wheel
-(<code>.whl</code>), and get byte for byte identical result to the wheels published on PyPI. This is a critical step toward being able
-to <em>trust</em> your computing platforms, and a key component to improve efficiency of build and packaging platforms. It also
-potentially impacts fast conda environment creation for users. The following goes into some reasons for why you should care.</p>
-<p class="more"><a href="2020/08/ipython-reproducible-builds/">Read more…</a></p>
-</div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="2020/08/introducing-versioned-hdf5/" class="u-url">Introducing Versioned HDF5</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                <a href="../authors/melissa-weber-mendonca/">Melissa Weber Mendonça</a>
-            </span></p>
-            <p class="dateline">
-            <a href="2020/08/introducing-versioned-hdf5/" rel="bookmark">
-            <time class="published dt-published" datetime="2020-08-21T08:00:00-05:00" itemprop="datePublished" title="2020-08-21">2020-08-21</time></a>
-            </p>
+
         </div>
-            
-        <div>
-            
-        <ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="../categories/h5py/" rel="tag">h5py</a></li>
-            <li><a class="tag p-category" href="../categories/hdf5/" rel="tag">HDF5</a></li>
-        </ul>
-</div>
     </header><div class="p-summary entry-summary">
     <div>
-<p>The problem of storing and manipulating large amounts of data is a challenge in
-many scientific computing and industry applications. One of the standard data
-models for this is <a href="https://support.hdfgroup.org/HDF5/whatishdf5.html">HDF5</a>,
-an open technology that implements a hierarchical structure (similar to a
-file-system structure) for storing large amounts of possibly heterogeneous data
-within a single file. Data in an HDF5 file is organized into <em>groups</em> and
-<em>datasets</em>; you can think about these as the folders and files in your local
-file system, respectively. You can also optionally store metadata associated
-with each item in a file, which makes this a self-describing and powerful data
-storage model.</p>
-<p class="more"><a href="2020/08/introducing-versioned-hdf5/">Read more…</a></p>
+<p>For contributors to the PyTorch codebase, one of the most commonly encountered
+C++ classes is
+<a href="https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/TensorIterator.h"><code>TensorIterator</code></a>.
+<code>TensorIterator</code> offers a standardized way to iterate over elements of
+a tensor, automatically parallelizing operations, while abstracting device and
+data type details.</p>
+<p>In April 2020, Sameer Deshmukh wrote a blog article discussing
+<a href="2020/04/pytorch-tensoriterator-internals/index.html">PyTorch TensorIterator Internals</a>. Recently,
+however, the interface has changed significantly. This post describes how to
+use the current interface as of April 2021. Much of the information from the
+previous article is directly copied here, but with updated API calls and some
+extra details.</p>
+<p class="more"><a href="2021/04/pytorch-tensoriterator-internals-update/">Read more…</a></p>
 </div>
     </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="2020/08/designing-with-and-for-developers/" class="u-url">Designing with and for developers</a></h1>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="2021/03/accessibility-whos-responsible/" class="u-url">Accessibility: Who's Responsible?</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 <a href="../authors/isabela-presedo-floyd/">Isabela Presedo-Floyd</a>
             </span></p>
             <p class="dateline">
-            <a href="2020/08/designing-with-and-for-developers/" rel="bookmark">
-            <time class="published dt-published" datetime="2020-08-05T12:13:42-08:42" itemprop="datePublished" title="2020-08-05">2020-08-05</time></a>
+            <a href="2021/03/accessibility-whos-responsible/" rel="bookmark">
+            <time class="published dt-published" datetime="2021-03-25T08:00:00Z" itemprop="datePublished" title="2021-03-25">2021-03-25</time></a>
             </p>
         </div>
             
         <div>
             
         <ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="../categories/design/" rel="tag">design</a></li>
+<li><a class="tag p-category" href="../categories/accessibility/" rel="tag">Accessibility</a></li>
+            <li><a class="tag p-category" href="../categories/jlaba11y/" rel="tag">JLabA11y</a></li>
+            <li><a class="tag p-category" href="../categories/jupyterlab/" rel="tag">JupyterLab</a></li>
         </ul>
 </div>
     </header><div class="p-summary entry-summary">
     <div>
-<p>Open source is notorious for lack of design presence, enough so that my search
-to prove this fact has turned up nearly nothing. There’s many ways that such a
-gap in community might manifest, but one that I never anticipated was working
-with developers that had never interacted with a designer before.</p>
-<p>A quick note for context: I’m writing this as a UX/UI designer working with
-open source projects for a little over a year. Because there are so many ways
-design processes can happen (enough to warrant its own blog post), this post is
-not intended to discuss design process deeply. My goal here is to pass on some
-of what I’ve learned that helps me design in this unusual space in hopes that
-it can help someone else. This post might seem most relevant for designers, but
-I think this experience could be helpful for developers as well.</p>
-<p class="more"><a href="2020/08/designing-with-and-for-developers/">Read more…</a></p>
+<p><img alt="Fingers and question marks pointing in every direction" src="../images/jlabaccess1.png"></p>
+<h3>JupyterLab Accessibility Journey Part 1</h3>
+<p>For the past few months, I've been part of a group of people in the JupyterLab community 
+who've committed to start chipping away at the many accessibility failings of JupyterLab. 
+I find this work is critical, fascinating, and a learning experience for everyone involved. 
+So I'm going to document my personal experience and lessons I've learned in a series of blog 
+posts. Welcome!</p>
+<p class="more"><a href="2021/03/accessibility-whos-responsible/">Read more…</a></p>
 </div>
     </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="2020/07/a-win-win-all-around/" class="u-url">Quansight Labs: what I learned in my first 3 months</a></h1>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="2021/02/enhancements-to-numba-guvectorize-decorator/" class="u-url">Enhancements to Numba's guvectorize decorator</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                <a href="../authors/matti-picus/">Matti Picus</a>
+                <a href="../authors/guilherme-leobas/">Guilherme Leobas</a>
             </span></p>
             <p class="dateline">
-            <a href="2020/07/a-win-win-all-around/" rel="bookmark">
-            <time class="published dt-published" datetime="2020-07-21T01:00:00-05:00" itemprop="datePublished" title="2020-07-21">2020-07-21</time></a>
+            <a href="2021/02/enhancements-to-numba-guvectorize-decorator/" rel="bookmark">
+            <time class="published dt-published" datetime="2021-02-25T08:00:00Z" itemprop="datePublished" title="2021-02-25">2021-02-25</time></a>
             </p>
         </div>
             
         <div>
             
         <ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="../categories/funding/" rel="tag">funding</a></li>
-            <li><a class="tag p-category" href="../categories/labs/" rel="tag">Labs</a></li>
-            <li><a class="tag p-category" href="../categories/numpy/" rel="tag">NumPy</a></li>
-            <li><a class="tag p-category" href="../categories/pytorch/" rel="tag">PyTorch</a></li>
+<li><a class="tag p-category" href="../categories/labs/" rel="tag">Labs</a></li>
+            <li><a class="tag p-category" href="../categories/numba/" rel="tag">Numba</a></li>
         </ul>
 </div>
     </header><div class="p-summary entry-summary">
     <div>
-<p>I joined Quansight at the beginning of April, splitting my time between
-PyTorch (as part of a larger Quansight team) and contributing to Quansight Labs
-supported community-driven projects in the Python scientific and data science
-software stack, primarily to NumPy.  I have found my next home; the people, the
-projects, and the atmosphere are an all around win-win for me and (I hope) for
-the projects to which I contribute.</p>
-<p class="more"><a href="2020/07/a-win-win-all-around/">Read more…</a></p>
-</div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="2020/07/nixos-rpi-wifi-router/" class="u-url">Learn NixOS by turning a Raspberry Pi into a Wireless Router</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                <a href="../authors/anthony-scopatz/">Anthony Scopatz</a>
-            </span></p>
-            <p class="dateline">
-            <a href="2020/07/nixos-rpi-wifi-router/" rel="bookmark">
-            <time class="published dt-published" datetime="2020-07-11T00:39:56-05:00" itemprop="datePublished" title="2020-07-11">2020-07-11</time></a>
-            </p>
-        </div>
-            
-        <div>
-            
-        <ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="../categories/nixos/" rel="tag">NixOS</a></li>
-            <li><a class="tag p-category" href="../categories/raspberry-pi/" rel="tag">Raspberry Pi</a></li>
-            <li><a class="tag p-category" href="../categories/wireless-router/" rel="tag">Wireless Router</a></li>
-        </ul>
-</div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<p>I recently moved, and my new place has a relatively small footprint.  (Yes, I
-moved during the COVID-19 pandemic. And yes, it was crazy.) I quickly realized
-that was going to need a wireless router of some sort, or more formally, a wireless
-access point (WAP). Using my Ubuntu laptop's "wireless hotspot" capability was a
-nice temporary solution, but it had a few serious drawbacks.</p>
-<p class="more"><a href="2020/07/nixos-rpi-wifi-router/">Read more…</a></p>
+<p>Starting from Numba 0.53, Numba will ship with an enhanced version of the <code>@guvectorize</code> decorator. Similar to the <a href="https://numba.pydata.org/numba-doc/dev/user/vectorize.html#the-vectorize-decorator">@vectorize</a> decorator, <a href="https://numba.pydata.org/numba-doc/dev/user/vectorize.html#the-guvectorize-decorator">@guvectorize</a> now has two modes of operation:</p>
+<ul>
+<li>Eager, or decoration-time compilation and</li>
+<li>Lazy, or call-time compilation</li>
+</ul>
+<p>Before, only the eager approach was supported. In this mode, users are required to provide a list of concrete supported types beforehand as its first argument. Now, this list can be omitted if desired and as one calls it, Numba dynamically generates new kernels for previously unsupported types.</p>
+<p class="more"><a href="2021/02/enhancements-to-numba-guvectorize-decorator/">Read more…</a></p>
 </div>
     </div>
     </article>
@@ -439,7 +642,7 @@ nice temporary solution, but it had a few serious drawbacks.</p>
 
         <ul class="pager postindexpager clearfix">
 <li class="previous">
-                <a href="index-4.html" rel="next">Older posts</a>
+                <a href="index-6.html" rel="next">Older posts</a>
             </li>
 
             <li class="archive">
@@ -462,7 +665,7 @@ MathJax.Hub.Config({
    }
 });
 </script><!--End of body content--><footer id="footer">
-            Contents © 2020         <a href="../team">Quansight Labs Team</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2021         <a href="../team">Quansight Labs Team</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>

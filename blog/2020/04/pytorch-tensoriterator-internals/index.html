@@ -30,19 +30,31 @@ MathJax.Hub.Config({
   gtag('js', new Date());
 
   gtag('config', 'UA-163785882-1');
-</script><meta name="author" content="Sameer Deshmukh">
+</script><link rel="stylesheet" type="text/css" href="../../../../assets/css/tipuesearch.css">
+<meta name="author" content="Sameer Deshmukh">
+<meta property="description" content="The history section of this post is still relevant, but TensorIterator's
+interface has changed significantly. For an update on the new API, please check
+out this new blog
+post.
+PyTorch is one of the l">
 <link rel="prev" href="../../03/documentation-as-a-way-to-build-community/" title="Documentation as a way to build Community" type="text/html">
 <link rel="next" href="../introducing-ndindex-a-python-library-for-manipulating-indices-of-ndarrays/" title="Introducing ndindex, a Python library for manipulating indices of ndarrays" type="text/html">
 <meta property="og:site_name" content="Quansight Labs">
 <meta property="og:title" content="PyTorch TensorIterator Internals">
 <meta property="og:url" content="https://labs.quansight.org/blog/2020/04/pytorch-tensoriterator-internals/">
-<meta property="og:description" content="PyTorch is one of the leading frameworks for deep learning. Its core data
-structure is Tensor, a multi-dimensional array implementation with many
-advanced features like auto-differentiation. PyTorch i">
+<meta property="og:description" content="The history section of this post is still relevant, but TensorIterator's
+interface has changed significantly. For an update on the new API, please check
+out this new blog
+post.
+PyTorch is one of the l">
+<meta property="og:image" content="https://labs.quansight.org/images/QuansightLabs_logo_V2.png">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2020-04-13T10:39:56-05:00">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="PyTorch">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@quansightai">
+<meta property="twitter:image" content="https://labs.quansight.org/images/QuansightLabs_logo_V2.png">
 <link rel="stylesheet" href="../../../../assets/css/quansightlabs.css">
 </head>
 <body>
@@ -55,7 +67,7 @@ navbar-dark bg-dark
 "><div class="container">
 <!-- This keeps the margins nice -->
         <a class="navbar-brand" href="https://labs.quansight.org/">
-            <img src="../../../../images/quansight_labs_logo_white.png" alt="Quansight Labs" id="logo" class="d-inline-block align-top"></a>
+            <img src="../../../../images/QuansightLabs_logo_V1_white.png" alt="Quansight Labs" id="logo" class="d-inline-block align-top"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -83,7 +95,15 @@ navbar-dark bg-dark
                 
             </li>
 </ul>
-<ul class="navbar-nav navbar-right"></ul>
+<form class="navbar-form navbar-left" action="../../../../search" role="search">
+    <div class="form-group">
+        <input type="text" class="form-control" id="tipue_search_input" name="q" placeholder="Search…" autocomplete="off">
+</div>
+    <input type="submit" value="Local Search" style="visibility: hidden;"><!-- button type="submit" class="btn btn-default">Submit</button -->
+</form>
+
+
+            <ul class="navbar-nav navbar-right"></ul>
 </div>
 <!-- /.navbar-collapse -->
     </div>
@@ -115,6 +135,10 @@ navbar-dark bg-dark
             <li><a class="tag p-category" href="../../../../categories/pytorch/" rel="tag">PyTorch</a></li>
         </ul></header><div class="e-content entry-content" itemprop="articleBody text">
         <div>
+<p class="alert alert-warning">The history section of this post is still relevant, but <code>TensorIterator</code>'s
+interface has changed significantly. For an update on the new API, please check
+out <a href="../../../2021/04/pytorch-tensoriterator-internals-update/index.html">this new blog
+post</a>.</p>
 <p>PyTorch is one of the leading frameworks for deep learning. Its core data
 structure is <code>Tensor</code>, a multi-dimensional array implementation with many
 advanced features like auto-differentiation. PyTorch is a massive
@@ -358,7 +382,7 @@ from the PyTorch team on using <code>TensorIterator.</code></p>
                 <a href="../introducing-ndindex-a-python-library-for-manipulating-indices-of-ndarrays/" rel="next" title="Introducing ndindex, a Python library for manipulating indices of ndarrays">Next post</a>
             </li>
         </ul></nav></aside></article><!--End of body content--><footer id="footer">
-            Contents © 2020         <a href="../../../../team">Quansight Labs Team</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2021         <a href="../../../../team">Quansight Labs Team</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>

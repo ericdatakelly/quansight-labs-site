@@ -4,7 +4,8 @@
 .. tags: 
 .. category:
 .. link: 
-.. description: Us
+.. subtitle: Us
+.. description: The mission of Quansight Labs is to sustain and grow community-driven open source projects and ecosystems, with a focus on the core of the PyData stack and on tools and digital infrastructure for data science, ML/AI, and scientific computing.
 .. type: text
 
 
@@ -64,6 +65,7 @@ Contact Us
 
 Key contacts:
 
-- Ralf Gommers, Director of Quansight Labs: rgommers@quansight.com
+- Tania Allard, Co-Director of Quansight Labs: tania.allard@quansight.com
+- Ralf Gommers, Co-Director of Quansight Labs: rgommers@quansight.com
 - Travis Oliphant, CEO of Quansight: travis@quansight.com
 - for commercial inquiries: sales@quansight.com
